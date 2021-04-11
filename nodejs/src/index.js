@@ -1,16 +1,14 @@
-const express = require("express");
+const http = require("http");
 const checkIfPrime = require("./isPrime");
-
-const app = express();
 
 const number = 12345678;
 
-// route without child process
-app.get("/prime", (req, res) => {
-  const isPrime = checkIfPrime(number);
-  return res.send(isPrime);
-});
-
-app.listen(3000, () => {
-  console.log("server started on port 3000");
-});
+http
+  .createServer((req, res) => {
+    const isPrime = checkIfPrime(number);
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    return res.end(isPrime.toString());
+  })
+  .listen(3000, "0.0.0.0", () => {
+    console.log("Server started on 3000");
+  });
