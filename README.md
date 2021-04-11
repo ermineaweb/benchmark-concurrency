@@ -1,82 +1,94 @@
 ## Benchmark express
+```
 Running 30s test @ http://express:3000/
   2 threads and 50 connections
-  Thread calibration: mean lat.: 5000.737ms, rate sampling interval: 17940ms
-  Thread calibration: mean lat.: 4940.543ms, rate sampling interval: 17842ms
+  Thread calibration: mean lat.: 4887.618ms, rate sampling interval: 17842ms
+  Thread calibration: mean lat.: 4884.854ms, rate sampling interval: 17956ms
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    19.86s     5.69s   29.66s    57.32%
+    Latency    19.89s     5.69s   29.61s    57.36%
     Req/Sec    10.00      0.00    10.00    100.00%
-  610 requests in 30.06s, 141.78KB read
-  Socket errors: connect 0, read 0, write 0, timeout 134
-Requests/sec:     20.29
-Transfer/sec:      4.72KB
+  594 requests in 30.07s, 138.06KB read
+  Socket errors: connect 0, read 0, write 0, timeout 151
+Requests/sec:     19.75
+Transfer/sec:      4.59KB
+```
 
 ---------------------------------
 ## Benchmark express-cluster
+```
 Running 30s test @ http://express-cluster:3000/
   2 threads and 50 connections
-  Thread calibration: mean lat.: 5117.124ms, rate sampling interval: 17727ms
-  Thread calibration: mean lat.: 5119.672ms, rate sampling interval: 17678ms
+  Thread calibration: mean lat.: 4885.047ms, rate sampling interval: 17252ms
+  Thread calibration: mean lat.: 5405.954ms, rate sampling interval: 17842ms
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    19.62s     5.49s   29.02s    58.10%
-    Req/Sec    32.00      0.00    32.00    100.00%
-  1922 requests in 30.03s, 446.71KB read
-  Socket errors: connect 0, read 0, write 0, timeout 38
-Requests/sec:     64.01
-Transfer/sec:     14.88KB
+    Latency    19.47s     5.57s   29.05s    57.75%
+    Req/Sec    31.00      0.00    31.00    100.00%
+  1844 requests in 30.06s, 428.59KB read
+  Socket errors: connect 0, read 0, write 0, timeout 40
+Requests/sec:     61.35
+Transfer/sec:     14.26KB
+```
 
 ---------------------------------
 ## Benchmark express-forked
+```
 Running 30s test @ http://express-forked:3000/
   2 threads and 50 connections
-  Thread calibration: mean lat.: 5492.515ms, rate sampling interval: 17973ms
-  Thread calibration: mean lat.: 5487.842ms, rate sampling interval: 17858ms
+  Thread calibration: mean lat.: 5452.787ms, rate sampling interval: 18006ms
+  Thread calibration: mean lat.: 5419.343ms, rate sampling interval: 17612ms
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    19.77s     5.53s   29.15s    58.86%
-    Req/Sec    26.00      0.00    26.00    100.00%
-  1561 requests in 30.03s, 362.81KB read
-Requests/sec:     51.98
-Transfer/sec:     12.08KB
+    Latency    19.44s     5.53s   29.03s    58.75%
+    Req/Sec    25.00      0.00    25.00    100.00%
+  1454 requests in 30.00s, 337.94KB read
+Requests/sec:     48.47
+Transfer/sec:     11.26KB
+```
 
 ---------------------------------
 ## Benchmark nodejs
+```
 Running 30s test @ http://nodejs:3000/
   2 threads and 50 connections
-  Thread calibration: mean lat.: 5031.489ms, rate sampling interval: 18022ms
-  Thread calibration: mean lat.: 5003.805ms, rate sampling interval: 18153ms
+  Thread calibration: mean lat.: 5824.390ms, rate sampling interval: 17432ms
+  Thread calibration: mean lat.: 4274.942ms, rate sampling interval: 17498ms
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    19.89s     5.71s   29.64s    57.32%
+    Latency    19.45s     5.71s   29.10s    59.50%
     Req/Sec    10.00      0.00    10.00    100.00%
-  621 requests in 30.08s, 104.31KB read
-  Socket errors: connect 0, read 0, write 0, timeout 125
-Requests/sec:     20.64
-Transfer/sec:      3.47KB
+  587 requests in 30.15s, 98.60KB read
+  Socket errors: connect 0, read 0, write 0, timeout 151
+Requests/sec:     19.47
+Transfer/sec:      3.27KB
+```
 
 ---------------------------------
 ## Benchmark nodejs-cluster
+```
 Running 30s test @ http://nodejs-cluster:3000/
   2 threads and 50 connections
-  Thread calibration: mean lat.: 2.876ms, rate sampling interval: 14ms
-  Thread calibration: mean lat.: 2.632ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 27.368ms, rate sampling interval: 45ms
+  Thread calibration: mean lat.: 7.463ms, rate sampling interval: 10ms
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    15.91ms   65.78ms 509.18ms   95.45%
-    Req/Sec     1.11k     0.99k   11.22k    47.39%
-  58951 requests in 30.00s, 9.67MB read
-Requests/sec:   1964.98
-Transfer/sec:    330.05KB
+    Latency    15.27ms   64.18ms 503.04ms   95.61%
+    Req/Sec     1.12k   489.20     7.00k    88.05%
+  59904 requests in 30.00s, 9.83MB read
+Requests/sec:   1996.49
+Transfer/sec:    335.35KB
+```
 
 ---------------------------------
 ## Benchmark nodejs-forked
+```
 Running 30s test @ http://nodejs-forked:3000/
   2 threads and 50 connections
-  Thread calibration: mean lat.: 5371.628ms, rate sampling interval: 18268ms
-  Thread calibration: mean lat.: 5321.408ms, rate sampling interval: 18251ms
+  Thread calibration: mean lat.: 5303.873ms, rate sampling interval: 17727ms
+  Thread calibration: mean lat.: 5543.567ms, rate sampling interval: 18546ms
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    19.61s     5.59s   29.41s    57.99%
-    Req/Sec    13.50      0.50    14.00    100.00%
-  851 requests in 30.08s, 142.94KB read
-  Socket errors: connect 0, read 0, write 0, timeout 16
-Requests/sec:     28.29
-Transfer/sec:      4.75KB
+    Latency    20.00s     5.66s   29.57s    57.43%
+    Req/Sec    12.00      0.00    12.00    100.00%
+  740 requests in 30.15s, 124.30KB read
+  Socket errors: connect 0, read 0, write 0, timeout 42
+Requests/sec:     24.55
+Transfer/sec:      4.12KB
+```
 
 ---------------------------------
