@@ -24,7 +24,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	jobs = make(chan int, 100)
 	go worker(jobs)
-	http.HandleFunc("/prime", handler)
+	http.HandleFunc("/", handler)
 	fmt.Println("Server started on port 3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
 }

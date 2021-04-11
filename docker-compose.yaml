@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  wrk:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/results
+    depends_on:
+      - express
+      - express-cluster
+      - express-forked
+      - nodejs
+      - nodejs-cluster
+      - nodejs-forked
+
+  express:
+    build:
+      context: ./express
+      dockerfile: ./Dockerfile
+
+  express-cluster:
+    build:
+      context: ./express-cluster
+      dockerfile: ./Dockerfile
+
+  express-forked:
+    build:
+      context: ./express-forked
+      dockerfile: ./Dockerfile
+
+  nodejs:
+    build:
+      context: ./nodejs
+      dockerfile: ./Dockerfile
+
+  nodejs-cluster:
+    build:
+      context: ./nodejs-cluster
+      dockerfile: ./Dockerfile
+
+  nodejs-forked:
+    build:
+      context: ./nodejs-forked
+      dockerfile: ./Dockerfile

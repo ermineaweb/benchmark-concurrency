@@ -6,7 +6,7 @@ const app = express();
 const number = 0;
 
 // route with child processes
-app.get("/prime", (req, res) => {
+app.get("/", (req, res) => {
   // create the child process
   const forked_child_process = childProcess.fork("./src/forked.js");
   // send message to the child process

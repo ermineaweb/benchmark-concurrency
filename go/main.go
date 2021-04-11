@@ -12,7 +12,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/prime", handler)
+	http.HandleFunc("/debian:buster-slim", handler)
 	fmt.Println("Server started on port 3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
 }
