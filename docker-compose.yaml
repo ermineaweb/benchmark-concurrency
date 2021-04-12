@@ -7,52 +7,53 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./results:/results
+    env_file:
+      - .env
+    environment:
+      - servers= adonis express express-cluster express-forked fastify fastify-cluster fastify-forked golang golang-goroutines
     depends_on:
-      - express
-      - express-cluster
-      - express-forked
-      - fastify
-      - fastify-cluster
-      - fastify-forked
-      - golang
-      - golang-goroutines
-
+        - adonis
+        - express
+        - express-cluster
+        - express-forked
+        - fastify
+        - fastify-cluster
+        - fastify-forked
+        - golang
+        - golang-goroutines
+  adonis:
+    build:
+      context: ./projects/adonis
+      dockerfile: ./Dockerfile
   express:
     build:
-      context: ./express
+      context: ./projects/express
       dockerfile: ./Dockerfile
-
   express-cluster:
     build:
-      context: ./express-cluster
+      context: ./projects/express-cluster
       dockerfile: ./Dockerfile
-
   express-forked:
     build:
-      context: ./express-forked
+      context: ./projects/express-forked
       dockerfile: ./Dockerfile
-
   fastify:
     build:
-      context: ./fastify
+      context: ./projects/fastify
       dockerfile: ./Dockerfile
-
   fastify-cluster:
     build:
-      context: ./fastify-cluster
+      context: ./projects/fastify-cluster
       dockerfile: ./Dockerfile
-
   fastify-forked:
     build:
-      context: ./fastify-forked
+      context: ./projects/fastify-forked
       dockerfile: ./Dockerfile
-
   golang:
     build:
-      context: ./golang
+      context: ./projects/golang
       dockerfile: ./Dockerfile
-
   golang-goroutines:
     build:
-      context: ./golang-goroutines
+      context: ./projects/golang-goroutines
       dockerfile: ./Dockerfile
