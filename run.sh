@@ -1,35 +1,45 @@
 #!/bin/bash
 
-servers=("express" "express-cluster" "express-forked" "nodejs" "nodejs-cluster" "nodejs-forked")
-result="/results/README.md"
+# number of threads
+thread=4
+# total time of each test in seconds
+time=30
+# connections opened in same time
+connection=300
+# number of requests per second
+rate=60000
 
-if [ -f $result ] ; then
-    rm $result
-fi
+servers=(
+    "express"
+    "express-cluster"
+    "express-forked"
+    "fastify"
+    "fastify-cluster"
+    "fastify-forked"
+    "golang"
+    "golang-goroutines"
+)
 
-echo "# Abstract" >> $result
-echo -en "\n\n\n" >> $result
-echo "The goal of this project is to benchmark the capacity of \
-certain technologies to process HTTP requests requiring significant \
-processor calculations." >> $result
-echo -en "\n\n\n" >> $result
-echo "# Methodology" >> $result
-echo -en "\n\n\n" >> $result
-echo "The sub-projects present an endpoint which performs a calculation \
-requiring significant resources. We use the wrk tool to test each \
-sub-project and collect the data." >> $result
-echo -en "\n\n\n" >> $result
+benchmark() {
+    result="/results/$1"
+    if [ -f $result ]; then
+        rm $result
+    fi
 
-for server in ${servers[@]}
-do
-    echo "Benchmark $server"
-    echo -en "\n---------------------------------\n" >> $result
-    echo "### Benchmark $server" >> $result
-    echo "\`\`\`" >> $result
-    wrk -t2 -d30s -c50 -R2000 http://$server:3000/ >> $result
-    echo "\`\`\`" >> $result
-done
+    sleep 3
 
-chmod 777 $result
+    for server in ${servers[@]}; do
+        echo "Benchmark start $1 for $server"
+        echo -en "\n---------------------------------\n" >>$result
+        echo "### Benchmark $server" >>$result
+        echo "\`\`\`" >>$result
+        wrk -t"$thread" -d"$time"s -c"$connection" -R"$rate" http://$server:3000/$1 >>$result
+        echo "\`\`\`" >>$result
+    done
+    chmod 777 $result
+}
+
+benchmark "no_process"
+benchmark "with_heavy_process"
 
 exit 0

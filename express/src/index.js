@@ -3,12 +3,13 @@ const checkIfPrime = require("./isPrime");
 
 const app = express();
 
-const number = 12345678;
+app.get("/no_process", (req, res) => {
+  return res.status(200).send("it work");
+});
 
-// route without child process
-app.get("/", (req, res) => {
-  const isPrime = checkIfPrime(number);
-  return res.send(isPrime);
+app.get("/with_heavy_process", (req, res) => {
+  const isPrime = checkIfPrime(12345678);
+  return res.status(200).send(isPrime);
 });
 
 app.listen(3000, "0.0.0.0", () => {

@@ -1,18 +1,18 @@
-const express = require("express");
 const os = require("os");
 const cluster = require("cluster");
 const checkIfPrime = require("./isPrime");
 const numCpus = os.cpus().length;
+const fastify = require("fastify");
 
-const app = express();
+const app = fastify();
 
-app.get("/no_process", (req, res) => {
-  return res.status(200).send("it work");
+app.get("/no_process", (request, reply) => {
+  return reply.send("it work");
 });
 
-app.get("/with_heavy_process", (req, res) => {
+app.get("/with_heavy_process", (request, reply) => {
   const isPrime = checkIfPrime(12345678);
-  return res.status(200).send(isPrime);
+  return reply.send(isPrime.toString());
 });
 
 if (cluster.isMaster) {
@@ -21,6 +21,6 @@ if (cluster.isMaster) {
   }
 } else {
   app.listen(3000, "0.0.0.0", () => {
-    console.log(`worker ${process.pid} started`);
+    console.log(`Server started on 3000`);
   });
 }

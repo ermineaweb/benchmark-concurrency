@@ -1,0 +1,144 @@
+
+---------------------------------
+### Benchmark express
+```
+Running 30s test @ http://express:3000/with_heavy_process
+  4 threads and 300 connections
+  Thread calibration: mean lat.: 1658.416ms, rate sampling interval: 5832ms
+  Thread calibration: mean lat.: 7601.383ms, rate sampling interval: 18169ms
+  Thread calibration: mean lat.: 6777.204ms, rate sampling interval: 14139ms
+  Thread calibration: mean lat.: 5085.675ms, rate sampling interval: 12804ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    19.20s     5.68s   28.95s    57.60%
+    Req/Sec     5.33      5.50    12.00     66.67%
+  692 requests in 30.47s, 160.84KB read
+  Socket errors: connect 0, read 295, write 0, timeout 3246
+Requests/sec:     22.71
+Transfer/sec:      5.28KB
+```
+
+---------------------------------
+### Benchmark express-cluster
+```
+Running 30s test @ http://express-cluster:3000/with_heavy_process
+  4 threads and 300 connections
+  Thread calibration: mean lat.: 9223372036854776.000ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 5138.253ms, rate sampling interval: 18759ms
+  Thread calibration: mean lat.: 5122.620ms, rate sampling interval: 18677ms
+  Thread calibration: mean lat.: 5470.210ms, rate sampling interval: 18874ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    19.91s     5.61s   29.82s    58.10%
+    Req/Sec     0.04      0.98    24.00     99.83%
+  1964 requests in 30.39s, 456.48KB read
+  Socket errors: connect 0, read 0, write 0, timeout 3118
+Requests/sec:     64.63
+Transfer/sec:     15.02KB
+```
+
+---------------------------------
+### Benchmark express-forked
+```
+Running 30s test @ http://express-forked:3000/with_heavy_process
+  4 threads and 300 connections
+  Thread calibration: mean lat.: 7565.125ms, rate sampling interval: 18464ms
+  Thread calibration: mean lat.: 8411.898ms, rate sampling interval: 16908ms
+  Thread calibration: mean lat.: 7616.219ms, rate sampling interval: 18464ms
+  Thread calibration: mean lat.: 7705.917ms, rate sampling interval: 18448ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    20.31s     4.83s   27.48s    33.68%
+    Req/Sec    11.50      0.50    12.00    100.00%
+  1142 requests in 30.39s, 265.43KB read
+  Socket errors: connect 0, read 35, write 0, timeout 3208
+Requests/sec:     37.58
+Transfer/sec:      8.73KB
+```
+
+---------------------------------
+### Benchmark fastify
+```
+Running 30s test @ http://fastify:3000/with_heavy_process
+  4 threads and 300 connections
+  Thread calibration: mean lat.: 4837.826ms, rate sampling interval: 18219ms
+  Thread calibration: mean lat.: 9223372036854776.000ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 5534.632ms, rate sampling interval: 18857ms
+  Thread calibration: mean lat.: 5515.141ms, rate sampling interval: 18464ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    19.64s     5.42s   28.93s    59.57%
+    Req/Sec     7.82     27.03   111.00     92.26%
+  695 requests in 30.42s, 114.02KB read
+  Socket errors: connect 0, read 187, write 0, timeout 3511
+Requests/sec:     22.85
+Transfer/sec:      3.75KB
+```
+
+---------------------------------
+### Benchmark fastify-cluster
+```
+Running 30s test @ http://fastify-cluster:3000/with_heavy_process
+  4 threads and 300 connections
+  Thread calibration: mean lat.: 9223372036854776.000ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 5318.309ms, rate sampling interval: 19202ms
+  Thread calibration: mean lat.: 5296.595ms, rate sampling interval: 19120ms
+  Thread calibration: mean lat.: 5745.652ms, rate sampling interval: 19103ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    20.18s     5.67s   29.82s    57.44%
+    Req/Sec     0.04      0.93    23.00     99.83%
+  1873 requests in 30.40s, 307.29KB read
+  Socket errors: connect 0, read 0, write 0, timeout 3167
+Requests/sec:     61.62
+Transfer/sec:     10.11KB
+```
+
+---------------------------------
+### Benchmark fastify-forked
+```
+Running 30s test @ http://fastify-forked:3000/with_heavy_process
+  4 threads and 300 connections
+  Thread calibration: mean lat.: 8443.153ms, rate sampling interval: 17481ms
+  Thread calibration: mean lat.: 8765.440ms, rate sampling interval: 17481ms
+  Thread calibration: mean lat.: 8762.604ms, rate sampling interval: 17481ms
+  Thread calibration: mean lat.: 8732.813ms, rate sampling interval: 17498ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    21.70s     4.70s   28.98s    54.65%
+    Req/Sec     7.00      0.00     7.00    100.00%
+  628 requests in 30.40s, 103.03KB read
+  Socket errors: connect 0, read 28, write 0, timeout 3700
+Requests/sec:     20.66
+Transfer/sec:      3.39KB
+```
+
+---------------------------------
+### Benchmark golang
+```
+Running 30s test @ http://golang:3000/with_heavy_process
+  4 threads and 300 connections
+  Thread calibration: mean lat.: 9223372036854776.000ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 9223372036854776.000ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 9223372036854776.000ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 9223372036854776.000ms, rate sampling interval: 10ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    21.05s     5.38s   29.82s    59.08%
+    Req/Sec     7.00     26.82   300.00     93.14%
+  505 requests in 30.21s, 59.67KB read
+  Socket errors: connect 0, read 0, write 0, timeout 3782
+Requests/sec:     16.72
+Transfer/sec:      1.98KB
+```
+
+---------------------------------
+### Benchmark golang-goroutines
+```
+Running 30s test @ http://golang-goroutines:3000/with_heavy_process
+  4 threads and 300 connections
+  Thread calibration: mean lat.: 4897.460ms, rate sampling interval: 17104ms
+  Thread calibration: mean lat.: 5248.756ms, rate sampling interval: 18268ms
+  Thread calibration: mean lat.: 4988.085ms, rate sampling interval: 17809ms
+  Thread calibration: mean lat.: 5318.576ms, rate sampling interval: 18464ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    21.01s     5.31s   29.57s    60.37%
+    Req/Sec     5.00      0.00     5.00    100.00%
+  565 requests in 30.31s, 66.76KB read
+  Socket errors: connect 0, read 0, write 0, timeout 3679
+Requests/sec:     18.64
+Transfer/sec:      2.20KB
+```

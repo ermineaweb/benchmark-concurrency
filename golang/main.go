@@ -7,12 +7,17 @@ import (
 	"strconv"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func noProcess(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "it work")
+}
+
+func withProcess(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, strconv.FormatBool(isPrime(12345678)))
 }
 
 func main() {
-	http.HandleFunc("/debian:buster-slim", handler)
+	http.HandleFunc("/no_process", noProcess)
+	http.HandleFunc("/with_heavy_process", withProcess)
 	fmt.Println("Server started on port 3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
 }

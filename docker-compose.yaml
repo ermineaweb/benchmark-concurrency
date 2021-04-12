@@ -6,14 +6,16 @@ services:
       context: ./
       dockerfile: ./Dockerfile
     volumes:
-      - ./:/results
+      - ./results:/results
     depends_on:
       - express
       - express-cluster
       - express-forked
-      - nodejs
-      - nodejs-cluster
-      - nodejs-forked
+      - fastify
+      - fastify-cluster
+      - fastify-forked
+      - golang
+      - golang-goroutines
 
   express:
     build:
@@ -30,17 +32,27 @@ services:
       context: ./express-forked
       dockerfile: ./Dockerfile
 
-  nodejs:
+  fastify:
     build:
-      context: ./nodejs
+      context: ./fastify
       dockerfile: ./Dockerfile
 
-  nodejs-cluster:
+  fastify-cluster:
     build:
-      context: ./nodejs-cluster
+      context: ./fastify-cluster
       dockerfile: ./Dockerfile
 
-  nodejs-forked:
+  fastify-forked:
     build:
-      context: ./nodejs-forked
+      context: ./fastify-forked
+      dockerfile: ./Dockerfile
+
+  golang:
+    build:
+      context: ./golang
+      dockerfile: ./Dockerfile
+
+  golang-goroutines:
+    build:
+      context: ./golang-goroutines
       dockerfile: ./Dockerfile
