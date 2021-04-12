@@ -15,7 +15,9 @@ These endpoints perform or not a job that require significant resources. We use 
 
 ### Start
 
-`docker-compose up`
+```
+docker-compose up
+```
 
 
 ### Results
