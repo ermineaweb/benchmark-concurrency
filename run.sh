@@ -6,7 +6,7 @@ thread=4
 time=30
 # connections opened in same time
 connection=300
-# number of requests per second
+# total number of requests per second
 rate=60000
 
 servers=(
@@ -16,12 +16,13 @@ servers=(
     "fastify"
     "fastify-cluster"
     "fastify-forked"
+    "adonis"
     "golang"
     "golang-goroutines"
 )
 
 benchmark() {
-    result="/results/$1"
+    result="/results/$1.md"
     if [ -f $result ]; then
         rm $result
     fi
@@ -40,6 +41,6 @@ benchmark() {
 }
 
 benchmark "no_process"
-benchmark "with_heavy_process"
+benchmark "heavy_process"
 
 exit 0

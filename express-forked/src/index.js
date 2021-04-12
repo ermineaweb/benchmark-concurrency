@@ -10,7 +10,7 @@ app.get("/no_process", (req, res) => {
 });
 
 // route with child processes
-app.get("/with_heavy_process", (req, res) => {
+app.get("/heavy_process", (req, res) => {
   // create the child process
   const forked_child_process = childProcess.fork("./src/forked.js");
   // send message to the child process

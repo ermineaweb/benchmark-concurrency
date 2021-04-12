@@ -14,6 +14,7 @@ services:
       - fastify
       - fastify-cluster
       - fastify-forked
+      - adonis
       - golang
       - golang-goroutines
 
@@ -45,6 +46,11 @@ services:
   fastify-forked:
     build:
       context: ./fastify-forked
+      dockerfile: ./Dockerfile
+
+  adonis:
+    build:
+      context: ./adonis
       dockerfile: ./Dockerfile
 
   golang:

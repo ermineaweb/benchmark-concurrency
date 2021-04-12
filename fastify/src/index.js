@@ -7,7 +7,7 @@ app.get("/no_process", (request, reply) => {
   return reply.send("it work");
 });
 
-app.get("/with_heavy_process", (request, reply) => {
+app.get("/heavy_process", (request, reply) => {
   const isPrime = checkIfPrime(12345678);
   return reply.send(isPrime.toString());
 });

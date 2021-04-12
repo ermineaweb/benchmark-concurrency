@@ -7,11 +7,11 @@ app.get("/no_process", (req, res) => {
   return res.status(200).send("it work");
 });
 
-app.get("/with_heavy_process", (req, res) => {
+app.get("/heavy_process", (req, res) => {
   const isPrime = checkIfPrime(12345678);
   return res.status(200).send(isPrime);
 });
 
-app.listen(3000, "0.0.0.0", () => {
+app.listen(3000, () => {
   console.log("server started on port 3000");
 });

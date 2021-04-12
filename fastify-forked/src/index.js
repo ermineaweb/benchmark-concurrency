@@ -7,7 +7,7 @@ app.get("/no_process", (request, reply) => {
   return reply.send("it work");
 });
 
-app.get("/with_heavy_process", (request, reply) => {
+app.get("/heavy_process", (request, reply) => {
   // create the child process
   const forked_child_process = childProcess.fork("./src/forked.js");
   // send message to the child process
