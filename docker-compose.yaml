@@ -10,7 +10,7 @@ services:
     env_file:
       - .env
     environment:
-      - servers= adonis express express-cluster express-forked fastify fastify-cluster fastify-forked golang golang-goroutines
+      - servers= adonis express express-cluster express-forked fastify fastify-cluster fastify-forked golang golang-goroutines rust
     depends_on:
         - adonis
         - express
@@ -21,6 +21,7 @@ services:
         - fastify-forked
         - golang
         - golang-goroutines
+        - rust
   adonis:
     build:
       context: ./projects/adonis
@@ -56,4 +57,8 @@ services:
   golang-goroutines:
     build:
       context: ./projects/golang-goroutines
+      dockerfile: ./Dockerfile
+  rust:
+    build:
+      context: ./projects/rust
       dockerfile: ./Dockerfile
