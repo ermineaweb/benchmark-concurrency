@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 func noProcess(w http.ResponseWriter, r *http.Request) {
@@ -50,11 +49,10 @@ func main() {
 
 func isPrime(number int) bool {
 	isPrime := true
-	// for i := 2; i < number; i++ {
-	// 	if number%i == 0 {
-	// 		isPrime = false
-	// 	}
-	// }
-	time.Sleep(time.Millisecond * 1000)
+	for i := 2; i < number; i++ {
+		if number%i == 0 {
+			isPrime = false
+		}
+	}
 	return isPrime && number > 1
 }

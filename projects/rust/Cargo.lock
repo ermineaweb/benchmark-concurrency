@@ -10,6 +10,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "app"
+version = "0.1.0"
+dependencies = [
+ "hyper",
+ "hyper-router",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -444,14 +452,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7d707a4fa2637f2dca2ef9fd02225ec7661fe01a53623c1e6515b6916511f7a7"
 dependencies = [
  "ucd-util",
-]
-
-[[package]]
-name = "rust"
-version = "0.1.0"
-dependencies = [
- "hyper",
- "hyper-router",
 ]
 
 [[package]]

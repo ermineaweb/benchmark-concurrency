@@ -13,7 +13,7 @@ benchmark() {
         echo -en "\n---------------------------------\n" >>$result
         echo "### Benchmark $server" >>$result
         echo "\`\`\`" >>$result
-        wrk -t"$thread" -d"$time"s -c"$connection" -R"$rate" http://$server:3000/$1 >>$result
+        wrk -t"$threads" -d"$time"s -c"$connections" -R"$rate" http://$server:3000/$1 >>$result
         echo "\`\`\`" >>$result
     done
     chmod 777 $result

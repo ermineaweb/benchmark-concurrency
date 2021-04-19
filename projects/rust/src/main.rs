@@ -7,7 +7,19 @@ use hyper::server::Server;
 use hyper::rt::Future;
 use hyper_router::{Route, RouterBuilder, RouterService};
 
-fn request_handler(_: Request<Body>) -> Response<Body> {
+fn isPrime(number: u32) -> bool {
+    if number <= 1 {
+        return false;
+    }
+    for n in 2..number {
+        if number % n == 0 {
+            return true; // if it is not the last statement you need to use `return`
+        }
+    }
+    true // last value to return
+}
+
+fn noProcessHandler(_: Request<Body>) -> Response<Body> {
     let body = "it work";
     Response::builder()
         .header(CONTENT_LENGTH, body.len() as u64)
@@ -16,10 +28,19 @@ fn request_handler(_: Request<Body>) -> Response<Body> {
         .expect("Failed to construct the response")
 }
 
+fn heavyProcessHandler(_: Request<Body>) -> Response<Body> {
+    let result = isPrime(12345678).to_string();
+    Response::builder()
+        .header(CONTENT_LENGTH, result.len() as u64)
+        .header(CONTENT_TYPE, "text/plain")
+        .body(Body::from(result))
+        .expect("Failed to construct the response")
+}
+
 fn router_service() -> Result<RouterService, std::io::Error> {
     let router = RouterBuilder::new()
-        .add(Route::get("/no_process").using(request_handler))
-        .add(Route::get("/heavy_process").using(request_handler))
+        .add(Route::get("/no_process").using(noProcessHandler))
+        .add(Route::get("/heavy_process").using(heavyProcessHandler))
         .build();
 
     Ok(RouterService::new(router))
