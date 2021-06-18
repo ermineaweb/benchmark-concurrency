@@ -3,4 +3,5 @@ WORKDIR /app
 COPY ./ ./
 RUN go build -o main
 EXPOSE 3000
+ENV GIN_MODE=release
 CMD ["./main"]

@@ -13,10 +13,10 @@ benchmark() {
         echo -en "\n---------------------------------\n" >>$result
         echo "### Benchmark $server" >>$result
         echo "\`\`\`" >>$result
-        wrk -t"$threads" -d"$time"s -c"$connections" -R"$rate" http://$server:3000/$1 >>$result
+        wrk -t "$threads" -d "$time" -c "$connections" -R "$rate" http://$server:3000/$1 >>$result
         echo "\`\`\`" >>$result
     done
-    chmod 777 $result
+    chmod 1777 $result
 }
 
 benchmark "no_process"
